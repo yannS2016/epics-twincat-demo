@@ -5,12 +5,12 @@
   <Children>
     <Node>
       <Title>YT Scope NC Project</Title>
-      <Expanded>True</Expanded>
+      <Expanded>False</Expanded>
       <FileName>C:\Users\yanns\Documents\TcXaeShell\Tc-epics-training\Scope\YT Scope NC Project.tcscopex</FileName>
       <Children>
         <Node>
           <Title>DataPool</Title>
-          <Expanded>True</Expanded>
+          <Expanded>False</Expanded>
           <FileName></FileName>
           <Children>
             <Node>
@@ -53,12 +53,12 @@
         </Node>
         <Node>
           <Title>HT23</Title>
-          <Expanded>True</Expanded>
+          <Expanded>False</Expanded>
           <FileName></FileName>
           <Children>
             <Node>
               <Title>Position absolute</Title>
-              <Expanded>True</Expanded>
+              <Expanded>False</Expanded>
               <FileName></FileName>
               <Children>
                 <Node>
@@ -77,7 +77,7 @@
             </Node>
             <Node>
               <Title>Velocity</Title>
-              <Expanded>True</Expanded>
+              <Expanded>False</Expanded>
               <FileName></FileName>
               <Children>
                 <Node>
@@ -96,7 +96,7 @@
             </Node>
             <Node>
               <Title>Acceleration</Title>
-              <Expanded>True</Expanded>
+              <Expanded>False</Expanded>
               <FileName></FileName>
               <Children>
                 <Node>
@@ -109,7 +109,7 @@
             </Node>
             <Node>
               <Title>Position Lag</Title>
-              <Expanded>True</Expanded>
+              <Expanded>False</Expanded>
               <FileName></FileName>
               <Children>
                 <Node>
