@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="PRG_PTP" Id="{0b7cd14e-b03a-491a-b09a-60e7c46dba99}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_PTP
+VAR
+    fbPersistentDataStorage : LCLS_Tc_DevAbs.FB_PersistentDataStorage;
+	{attribute 'pytmc' := '
+		axis-link: GVL_Axes.Axes[1]
+		pv: TST:MOTION:PTP
+	'}
+   	fbPtp : FB_MotionStageNC(	
+		sName := 'PTP',
+        AxisRef := GVL_Axes.Axes[1],
+        iPersistentDataStorage := fbPersistentDataStorage
+	) ;
+	bFirstScan: BOOL := TRUE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF bFirstScan THEN
+    fbPtp.SetModeEnableLimits(
+        LimBackward := TRUE,
+        LimForward := TRUE,
+        HomeEnable  := FALSE,
+        BrakeMode   := E_StageBrakeMode.IF_ENABLED,
+        EnableMode  := E_StageEnableMode.DURING_MOTION,
+        HomeMode    := 1,
+        UserEnable  := TRUE,
+        HardwareEnable := TRUE
+    );
+    fbPtp.SetVelocity(
+        Velocity     := 1.0
+    );
+    bFirstScan := FALSE;
+END_IF
+
+fbPtp();
+fbPersistentDataStorage();]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

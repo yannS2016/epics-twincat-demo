@@ -1,0 +1,2 @@
+epicsEnvSet("IOC_TOP", "/c/Users/yanns/Documents/TcXaeShell/Tc-epics-training/iocBoot/ioc-Training")
+epicsEnvSet("IOC_DATA", "/cds/data/iocData")

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Name>Drive Manager 2</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{72a10d7e-1d98-4505-ace8-a2b4ac2cac90}</ProjectGuid>
+    <TcPath>..\Tc-epics-training.tsproj</TcPath>
+    <AssemblyName>TwinCAT Drive Manager 2 Project1</AssemblyName>
+    <RootNamespace>TwinCAT Drive Manager 2 Project1</RootNamespace>
+    <SaveDriveDataAsFiles>False</SaveDriveDataAsFiles>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Term 3 %28EL7062%29.tcdmdrv">
+      <SubType>Content</SubType>
+      <IoItemPathName>TIID^Device 1 (EtherCAT)^Term 1 (EK1101)^Term 3 (EL7062)</IoItemPathName>
+    </Content>
+  </ItemGroup>
+</Project>

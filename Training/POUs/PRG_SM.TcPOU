@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="PRG_SM" Id="{8653b1a6-0691-4335-82a3-96fc8c417877}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_SM
+VAR
+fbPersistentDataStorage : LCLS_Tc_DevAbs.FB_PersistentDataStorage;
+	{attribute 'pytmc' := '
+		pv: TST:MOTION
+		io: io
+		axis-link: GVL_Axes.Axes[1], GVL_Axes.Axes[2]
+		expand-names: M1, M2
+	'}	
+    afbMotorsNC	: ARRAY[1..MotionConstants.MAX_STATE_MOTORS] OF FB_MotionStageNC[
+		(AxisRef := GVL_Axes.Axes[1],  iPersistentDataStorage := fbPersistentDataStorage,  sName := 'M1'),
+		(AxisRef := GVL_Axes.Axes[2],  iPersistentDataStorage := fbPersistentDataStorage,  sName := 'M2')
+	];
+	{attribute 'pytmc' := '
+		pv: TST:MOTION:STATE
+		io: io
+		expand-names: M1, M2
+	'}
+    astPositionState	:  ARRAY[1..MotionConstants.MAX_STATE_MOTORS] OF ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    aiMotionStage     	:  ARRAY[1..MotionConstants.MAX_STATE_MOTORS] OF I_MotionStage
+                        := [afbMotorsNC [1], afbMotorsNC[2]];
+    {attribute 'pytmc' := '
+          pv: TST:MOTION:STATE:SET
+          io: io
+    '}
+    eEnumSet          	: E_AxisStates;
+    {attribute 'pytmc' := '
+          pv: TST:MOTION:STATE:GET
+          io: i
+    '}
+    eEnumGet          	: E_AxisStates;
+	
+    stDefault : ST_PositionState := (
+        fDelta := 0.5,
+        bMoveOk := TRUE,
+        bValid := TRUE
+    );
+    fbStateConfigurator : FB_StateConfigurator(
+        stDefault:= stDefault,
+        bSetDefault:=TRUE
+    );
+//Configurators
+    afbStateConfig : ARRAY[1..MotionConstants.MAX_STATE_MOTORS * GeneralConstants.MAX_STATES]
+                       OF FB_StateConfigurator[
+        // Motor 1
+        (stPositionState := astPositionState[1][E_State.OUT],      stDefault := stDefault, bSetDefault:= TRUE, sName := 'OUT',      fPosition := 100.0),
+        (stPositionState := astPositionState[1][E_State.TARGET1A], stDefault := stDefault, bSetDefault:= TRUE, sName := 'TARGET1A', fPosition := 200.0),
+        (stPositionState := astPositionState[1][E_State.TARGET1B], stDefault := stDefault, bSetDefault:= TRUE, sName := 'TARGET1B', fPosition := 300.0),
+        (stPositionState := astPositionState[1][E_State.TARGET1C], stDefault := stDefault, bSetDefault:= TRUE, sName := 'TARGET1C', fPosition := 400.0),
+        // Motor 2
+        (stPositionState := astPositionState[2][E_State.OUT],      stDefault := stDefault, bSetDefault:= TRUE, sName := 'OUT',            fPosition := 100.0),
+        (stPositionState := astPositionState[2][E_State.TARGET1A], stDefault := stDefault, bSetDefault:= TRUE, sName := 'TARGET1A',  fPosition := 200.0),
+        (stPositionState := astPositionState[2][E_State.TARGET1B], stDefault := stDefault, bSetDefault:= TRUE, sName := 'TARGET1B',  fPosition := 300.0),
+        (stPositionState := astPositionState[2][E_State.TARGET1C], stDefault := stDefault, bSetDefault:= TRUE, sName := 'TARGET1C',  fPosition := 400.0)
+    ];
+    {attribute 'pytmc' := 'pv: TST:MOTION'}
+    fbPositionStateND : FB_PositionStateND(
+        aiMotionStage    := aiMotionStage,
+        astPositionState := astPositionState,
+		nActiveMotorCount := 2,
+        eEnumSet         := eEnumSet,
+        eEnumGet         := eEnumGet
+    );
+    bFirstScan : BOOL := TRUE;
+	rtReady: R_TRIG;
+    i    : INT;
+    nCfg : INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF bFirstScan THEN
+	FOR i := 1 TO 3 DO
+		afbMotorsNC[i].SetModeEnableLimits(
+			LimBackward    := TRUE,
+			LimForward     := TRUE,
+			HomeEnable     := FALSE,
+			BrakeMode      := E_StageBrakeMode.IF_ENABLED,
+			EnableMode     := E_StageEnableMode.DURING_MOTION,
+			HomeMode       := 1,
+			UserEnable     := TRUE,
+			HardwareEnable := TRUE
+		);
+		// Motion parameters live on the drive layer, not the state.
+		afbMotorsNC[i].SetMotionParam(
+			Velocity     := 25.0,
+			Acceleration := 250.0,
+			Deceleration := 250.0,
+			Jerk         := 2500.0
+		);
+        afbMotorsNC[i].RestoreMotionParams:= FALSE;
+	END_FOR
+    bFirstScan := FALSE;
+END_IF
+
+// Configure states : called every cycle. One configurator per (motor, state)
+// pair, each bound to its own stPositionState reference at init.
+FOR nCfg := 1 TO MotionConstants.MAX_STATE_MOTORS * GeneralConstants.MAX_STATES DO
+    afbStateConfig[nCfg]();
+END_FOR
+
+fbPositionStateND();
+fbPersistentDataStorage();
+FOR i := 1 TO 2 DO
+	afbMotorsNC[i]();	
+END_FOR]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
