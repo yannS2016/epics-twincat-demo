@@ -6,8 +6,8 @@
 # Generated using: pytmc 2.22.1
 # Project version: unknown
 #    Project hash: unknown
-#     PLC IP/host: 192.168.0.3
-#      PLC Net ID: 192.168.0.3.1.1
+#     PLC IP/host: 
+#      PLC Net ID: 
 # ** DEVELOPMENT MODE IOC **
 # * Using IOC boot directory for autosave.
 # * Archiver settings will not be configured.
@@ -40,8 +40,8 @@ dbLoadDatabase("$(ADS_IOC_TOP)/dbd/adsIoc.dbd")
 adsIoc_registerRecordDeviceDriver(pdbbase)
 
 epicsEnvSet("ASYN_PORT",        "ASYN_PLC")
-epicsEnvSet("IPADDR",           "192.168.0.3")
-epicsEnvSet("AMSID",            "192.168.0.3.1.1")
+epicsEnvSet("IPADDR",           "")
+epicsEnvSet("AMSID",            "")
 epicsEnvSet("AMS_PORT",         "851")
 epicsEnvSet("ADS_MAX_PARAMS",   "1780")
 epicsEnvSet("ADS_SAMPLE_MS",    "50")
@@ -55,7 +55,7 @@ epicsEnvSet("ADS_TIME_SOURCE",  "0")
 epicsEnvSet("STREAM_PROTOCOL_PATH", "$(ADS_IOC_TOP)/db")
 
 # Add a route to the PLC automatically:
-system("${ADS_IOC_TOP}/scripts/add_route.sh 192.168.0.3 ^172.*$")
+system("${ADS_IOC_TOP}/scripts/add_route.sh  ^172.*$")
 
 # adsAsynPortDriverConfigure(portName, ipaddr, amsaddr, amsport,
 #    asynParamTableSize, priority, noAutoConnect, defaultSampleTimeMS,
@@ -140,7 +140,7 @@ dbLoadRecords("caPutLog.db", "IOC=$(IOC)")
 dbLoadRecords("TwinCAT_TaskInfo.db", "PORT=$(ASYN_PORT),PREFIX=PLC:Training,IDX=1,TASK_PORT=350")
 dbLoadRecords("TwinCAT_AppInfo.db", "PORT=$(ASYN_PORT), PREFIX=PLC:Training")
 
-dbLoadRecords("TwinCAT_Project.db", "PREFIX=PLC:Training,PROJECT=Tc-epics-training.tsproj,HASH=unknown,VERSION=unknown,PYTMC=2.22.1,PLC_HOST=192.168.0.3")
+dbLoadRecords("TwinCAT_Project.db", "PREFIX=PLC:Training,PROJECT=Tc-epics-training.tsproj,HASH=unknown,VERSION=unknown,PYTMC=2.22.1,PLC_HOST=")
 
 #   LCLS General: * (SLAC)
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:Training,DEPENDENCY=LCLS_General,VERSION=*,VENDOR=SLAC")
