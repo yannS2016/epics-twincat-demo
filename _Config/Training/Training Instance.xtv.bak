@@ -982,53 +982,102 @@ External Setpoint Generation:
 			</Relations>
 		</DataType>
 	</DataTypes>
-	<Instance TmcHash="{B4D04778-90A6-6FFC-AE24-780B8C52408D}">
+	<Instance TmcHash="{5DBA33DD-C66D-ADB7-E181-F18C7F22D739}">
 		<Vars VarGrpType="1">
 			<Name>PlcTask Inputs</Name>
 			<Var>
-				<Name>PRG_PTP.fbPtp.fbEncoderScaling.nRawEncoderULINT</Name>
+				<Name>PRG_PTP.fbptpht23.fbEncoderScaling.nRawEncoderULINT</Name>
 				<Type>ULINT</Type>
 			</Var>
 			<Var>
-				<Name>PRG_PTP.fbPtp.fbEncoderScaling.nRawEncoderUINT</Name>
+				<Name>PRG_PTP.fbptpht23.fbEncoderScaling.nRawEncoderUINT</Name>
 				<Comment><![CDATA[ Raw encoder IO for UINT (Relative Encoders)]]></Comment>
 				<Type>UINT</Type>
 			</Var>
 			<Var>
-				<Name>PRG_PTP.fbPtp.fbEncoderScaling.nRawEncoderINT</Name>
+				<Name>PRG_PTP.fbptpht23.fbEncoderScaling.nRawEncoderINT</Name>
 				<Comment><![CDATA[ Raw encoder IO for INT (LVDT)]]></Comment>
 				<Type>INT</Type>
 			</Var>
 			<Var>
-				<Name>PRG_PTP.fbPtp.fbEncoderScaling.nRawEncoderDINT</Name>
+				<Name>PRG_PTP.fbptpht23.fbEncoderScaling.nRawEncoderDINT</Name>
 				<Comment><![CDATA[ Raw encoder IO for INT (EL5072 LVDT)]]></Comment>
 				<Type>DINT</Type>
 			</Var>
 			<Var>
-				<Name>PRG_PTP.fbPtp.fbEncoderScaling.nRawEncoderUDINT</Name>
+				<Name>PRG_PTP.fbptpht23.fbEncoderScaling.nRawEncoderUDINT</Name>
 				<Comment><![CDATA[ Raw encoder IO for INT (EL7062)]]></Comment>
 				<Type>UDINT</Type>
 			</Var>
 			<Var>
-				<Name>PRG_PTP.fbPtp.fbLimSwStatus.bLimitFwd</Name>
+				<Name>PRG_PTP.fbptpht23.fbLimSwStatus.bLimitFwd</Name>
 				<Comment><![CDATA[ Hardware 
  NC Forward Limit Switch: TRUE if ok to move]]></Comment>
 				<Type>BOOL</Type>
 			</Var>
 			<Var>
-				<Name>PRG_PTP.fbPtp.fbLimSwStatus.bLimitBwd</Name>
+				<Name>PRG_PTP.fbptpht23.fbLimSwStatus.bLimitBwd</Name>
 				<Comment><![CDATA[ NC Backward Limit Switch: TRUE if ok to move]]></Comment>
 				<Type>BOOL</Type>
 			</Var>
 			<Var>
-				<Name>PRG_PTP.fbPtp.fbLimSwStatus.bHomeSensor</Name>
+				<Name>PRG_PTP.fbptpht23.fbLimSwStatus.bHomeSensor</Name>
 				<Comment><![CDATA[ NO Home Switch: TRUE if at home]]></Comment>
 				<Type>BOOL</Type>
 			</Var>
 			<Var>
-				<Name>PRG_PTP.fbPtp.fbMotionInterlocksCommon.bHardwareEnable</Name>
+				<Name>PRG_PTP.fbptpht23.fbMotionInterlocksCommon.bHardwareEnable</Name>
 				<Comment><![CDATA[ NC STO Input: TRUE if ok to move]]></Comment>
 				<Type>BOOL</Type>
+			</Var>
+			<Var>
+				<Name>PRG_PTP.fbPtpso23hs.fbEncoderScaling.nRawEncoderULINT</Name>
+				<Type>ULINT</Type>
+			</Var>
+			<Var>
+				<Name>PRG_PTP.fbPtpso23hs.fbEncoderScaling.nRawEncoderUINT</Name>
+				<Comment><![CDATA[ Raw encoder IO for UINT (Relative Encoders)]]></Comment>
+				<Type>UINT</Type>
+			</Var>
+			<Var>
+				<Name>PRG_PTP.fbPtpso23hs.fbEncoderScaling.nRawEncoderINT</Name>
+				<Comment><![CDATA[ Raw encoder IO for INT (LVDT)]]></Comment>
+				<Type>INT</Type>
+			</Var>
+			<Var>
+				<Name>PRG_PTP.fbPtpso23hs.fbEncoderScaling.nRawEncoderDINT</Name>
+				<Comment><![CDATA[ Raw encoder IO for INT (EL5072 LVDT)]]></Comment>
+				<Type>DINT</Type>
+			</Var>
+			<Var>
+				<Name>PRG_PTP.fbPtpso23hs.fbEncoderScaling.nRawEncoderUDINT</Name>
+				<Comment><![CDATA[ Raw encoder IO for INT (EL7062)]]></Comment>
+				<Type>UDINT</Type>
+			</Var>
+			<Var>
+				<Name>PRG_PTP.fbPtpso23hs.fbLimSwStatus.bLimitFwd</Name>
+				<Comment><![CDATA[ Hardware 
+ NC Forward Limit Switch: TRUE if ok to move]]></Comment>
+				<Type>BOOL</Type>
+			</Var>
+			<Var>
+				<Name>PRG_PTP.fbPtpso23hs.fbLimSwStatus.bLimitBwd</Name>
+				<Comment><![CDATA[ NC Backward Limit Switch: TRUE if ok to move]]></Comment>
+				<Type>BOOL</Type>
+			</Var>
+			<Var>
+				<Name>PRG_PTP.fbPtpso23hs.fbLimSwStatus.bHomeSensor</Name>
+				<Comment><![CDATA[ NO Home Switch: TRUE if at home]]></Comment>
+				<Type>BOOL</Type>
+			</Var>
+			<Var>
+				<Name>PRG_PTP.fbPtpso23hs.fbMotionInterlocksCommon.bHardwareEnable</Name>
+				<Comment><![CDATA[ NC STO Input: TRUE if ok to move]]></Comment>
+				<Type>BOOL</Type>
+			</Var>
+			<Var>
+				<Name>GVL_Axes.Axes[1].NcToPlc</Name>
+				<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 			</Var>
 			<Var>
 				<Name>GVL_Axes.Axes[2].NcToPlc</Name>
@@ -1042,15 +1091,16 @@ External Setpoint Generation:
 				<Name>GVL_Axes.Axes[4].NcToPlc</Name>
 				<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 			</Var>
-			<Var>
-				<Name>GVL_Axes.Axes[1].NcToPlc</Name>
-				<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-			</Var>
 		</Vars>
 		<Vars VarGrpType="2" AreaNo="1">
 			<Name>PlcTask Outputs</Name>
 			<Var>
-				<Name>PRG_PTP.fbPtp.fbMotionAxis.fbBrake.bBrakeRelease</Name>
+				<Name>PRG_PTP.fbptpht23.fbMotionAxis.fbBrake.bBrakeRelease</Name>
+				<Comment><![CDATA[ NC Brake Output: TRUE to release brake]]></Comment>
+				<Type>BOOL</Type>
+			</Var>
+			<Var>
+				<Name>PRG_PTP.fbPtpso23hs.fbMotionAxis.fbBrake.bBrakeRelease</Name>
 				<Comment><![CDATA[ NC Brake Output: TRUE to release brake]]></Comment>
 				<Type>BOOL</Type>
 			</Var>

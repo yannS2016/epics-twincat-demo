@@ -20,6 +20,15 @@
 	</Instance>
 	<Mappings>
 		<OwnerA>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^EL5042_E2">
+				<Link VarA="PlcTask Inputs^PRG_PTP.fbptpht23.fbEncoderScaling.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^EL5101_E3">
+				<Link VarA="PlcTask Inputs^PRG_PTP.fbPtpso23hs.fbEncoderScaling.nRawEncoderUDINT" VarB="ENC Status compact^Counter value" AutoLink="true" Size="16"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^EL7047_E5">
+				<Link VarA="PlcTask Inputs^PRG_PTP.fbPtpso23hs.fbLimSwStatus.bLimitBwd" VarB="STM Status^Status^Digital input 1" AutoLink="true" Size="1"/>
+			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^HT23">
 				<Link VarA="PlcTask Inputs^GVL_Axes.Axes[1].NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^GVL_Axes.Axes[1].PlcToNc" VarB="Inputs^FromPlc"/>

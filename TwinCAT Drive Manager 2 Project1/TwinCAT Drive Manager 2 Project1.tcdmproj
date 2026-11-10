@@ -10,6 +10,26 @@
     <SaveDriveDataAsFiles>False</SaveDriveDataAsFiles>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="EL7047_E4.tcdmdrv">
+      <SubType>Content</SubType>
+      <IoItemPathName>TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^EL7047_E4</IoItemPathName>
+    </Content>
+    <Content Include="EL7047_E5.tcdmdrv">
+      <SubType>Content</SubType>
+      <IoItemPathName>TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^EL7047_E5</IoItemPathName>
+    </Content>
+    <Content Include="HT23.tcdmdrv">
+      <SubType>Content</SubType>
+      <IoItemPathName>TIID^Device 1 (EtherCAT)^EK1101_E6^HT23</IoItemPathName>
+    </Content>
+    <Content Include="SO23HS.tcdmdrv">
+      <SubType>Content</SubType>
+      <IoItemPathName>TIID^Device 1 (EtherCAT)^EK1101_E6^SO23HS</IoItemPathName>
+    </Content>
+    <Content Include="Term 10 %28EL7047%29.tcdmdrv">
+      <SubType>Content</SubType>
+      <IoItemPathName>TIID^Device 1 (EtherCAT)^Term 6 (EK1101)^Term 10 (EL7047)</IoItemPathName>
+    </Content>
     <Content Include="Term 3 %28EL7062%29.tcdmdrv">
       <SubType>Content</SubType>
       <IoItemPathName>TIID^Device 1 (EtherCAT)^Term 1 (EK1101)^Term 3 (EL7062)</IoItemPathName>
@@ -21,6 +41,10 @@
     <Content Include="Term 8 %28EL7047%29.tcdmdrv">
       <SubType>Content</SubType>
       <IoItemPathName>TIID^Device 1 (EtherCAT)^Term 5 (EK1101)^Term 8 (EL7047)</IoItemPathName>
+    </Content>
+    <Content Include="Term 9 %28EL7047%29.tcdmdrv">
+      <SubType>Content</SubType>
+      <IoItemPathName>TIID^Device 1 (EtherCAT)^Term 6 (EK1101)^Term 9 (EL7047)</IoItemPathName>
     </Content>
   </ItemGroup>
 </Project>

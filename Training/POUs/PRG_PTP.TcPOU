@@ -6,11 +6,25 @@ VAR
     fbPersistentDataStorage : LCLS_Tc_DevAbs.FB_PersistentDataStorage;
 	{attribute 'pytmc' := '
 		axis-link: GVL_Axes.Axes[1]
-		pv: TST:MOTION:PTP
+		pv: TST:MOTION:HT23
 	'}
-   	fbPtp : FB_MotionStageNC(	
-		sName := 'PTP',
+    {attribute 'TcLinkTo' := '.fbEncoderScaling.nRawEncoderULINT  := TIIB[EL5042_E2]^FB Inputs Channel 1^Position
+	'}
+   	fbptpht23 : FB_MotionStageNC(	
+		sName := 'HT23',
         AxisRef := GVL_Axes.Axes[1],
+        iPersistentDataStorage := fbPersistentDataStorage
+	) ;
+	{attribute 'pytmc' := '
+		axis-link: GVL_Axes.Axes[2]
+		pv: TST:MOTION:SO23HS
+	'}
+    {attribute 'TcLinkTo' := '.fbLimSwStatus.bLimitBwd := TIIB[EL7047_E5]^STM Status^Status^Digital input 1;
+                              .fbEncoderScaling.nRawEncoderUDINT  := TIIB[EL5101_E3]^ENC Status compact^Counter value
+	'}
+   	fbPtpso23hs : FB_MotionStageNC(	
+		sName := 'SO23HS',
+        AxisRef := GVL_Axes.Axes[2],
         iPersistentDataStorage := fbPersistentDataStorage
 	) ;
 	bFirstScan: BOOL := TRUE;
@@ -18,7 +32,7 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF bFirstScan THEN
-    fbPtp.SetModeEnableLimits(
+    fbptpht23.SetModeEnableLimits(
         LimBackward := TRUE,
         LimForward := TRUE,
         HomeEnable  := FALSE,
@@ -28,13 +42,27 @@ END_VAR
         UserEnable  := TRUE,
         HardwareEnable := TRUE
     );
-    fbPtp.SetVelocity(
+    fbptpht23.SetVelocity(
+        Velocity     := 1.0
+    );
+	fbPtpso23hs.SetModeEnableLimits(
+        LimBackward := TRUE,
+        LimForward := TRUE,
+        HomeEnable  := FALSE,
+        BrakeMode   := E_StageBrakeMode.IF_ENABLED,
+        EnableMode  := E_StageEnableMode.DURING_MOTION,
+        HomeMode    := E_EpicsHomeCmd.LOW_LIMIT,
+        UserEnable  := TRUE,
+        HardwareEnable := TRUE
+    );
+    fbPtpso23hs.SetVelocity(
         Velocity     := 1.0
     );
     bFirstScan := FALSE;
 END_IF
 
-fbPtp();
+fbptpht23();
+fbPtpso23hs();
 fbPersistentDataStorage();]]></ST>
     </Implementation>
   </POU>

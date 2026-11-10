@@ -1427,12 +1427,14 @@ External Setpoint Generation:
 	<Axis Id="1" CreateSymbols="true" AxisType="1">
 		<Name>__FILENAME__</Name>
 		<AxisPara>
-			<Dynamic AccelerationMaximum="10" DecelerationMaximum="10" Acceleration="11.85" Deceleration="11.85" Jerk="121.054"/>
-			<Velo RefSearch="0.33333" RefSync="0.33333" SlowManual="0.25" FastManual="0.5" Fast="33.333" Maximum="2"/>
-			<OtherSettings AllowMotionCmdToSlave="true" PulseDistancePos="0.5" PulseDistanceNeg="0.5"/>
+			<Dynamic AccelerationMaximum="200" DecelerationMaximum="200" Acceleration="69.351" Deceleration="69.351" Jerk="1502.99"/>
+			<Velo RefSearch="0.33333" RefSync="0.33333" SlowManual="0.1" FastManual="0.2" Fast="33.333" Maximum="5"/>
+			<TargetPosControl Range="0.01"/>
+			<OtherSettings AllowMotionCmdToSlave="true" PulseDistancePos="0.2" PulseDistanceNeg="0.2"/>
 		</AxisPara>
-		<Encoder Name="Enc" EncType="29">
-			<EncPara ScaleFactorNumerator="5e-05" Offset="-6871876.5117" MaxCount="#xffffffff" MaxCountHighDWord="#x0000001f" ReferenceSystem="1">
+		<Encoder Name="Enc" EncType="4">
+			<EncPara ScaleFactorNumerator="5e-05" Offset="-6871873" MaxCount="#x0000ffff">
+				<ActPosCorrection Enable="true"/>
 				<Inc RefSoftSyncMask="#x0000ffff"/>
 				<TimeComp TimeCompMode="1" EncDelayCycles="4"/>
 			</EncPara>
@@ -1541,8 +1543,10 @@ External Setpoint Generation:
 				</Var>
 			</Vars>
 		</Drive>
-		<Controller Name="Ctrl" CtrType="1">
+		<Controller Name="Ctrl" CtrType="2">
 			<CtrPara PriorControlFactor="1">
+				<PosDiffControl Range="0.3"/>
+				<PID PosKp="2" PosExtKp="2.5" DeadBandPosition="0.002"/>
 				<Observer BandWidth="20"/>
 			</CtrPara>
 		</Controller>
@@ -1563,18 +1567,7 @@ External Setpoint Generation:
 	</Axis>
 	<Mappings>
 		<OwnerA>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1101)^Term 2 (EL5042)">
-				<Link VarA="Enc^Inputs^In^nComState" VarB="WcState^InputToggle" Size="1" OffsA="1"/>
-				<Link VarA="Enc^Inputs^In^nComState" VarB="WcState^WcState" Size="1"/>
-				<Link VarA="Enc^Inputs^In^nDataIn1" VarB="FB Inputs Channel 1^Position"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 1^Status^Diag" Size="1" OffsA="12"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 1^Status^Error" Size="1" OffsA="1"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 1^Status^Input cycle counter" Size="2" OffsA="14"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 1^Status^Ready" Size="1" OffsA="2"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 1^Status^TxPDO State" Size="1" OffsA="13"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="FB Inputs Channel 1^Status^Warning" Size="1"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1101)^Term 4 (EL7047)">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^EL7047_E4">
 				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Error" Size="1" OffsA="3"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Motor stall" Size="1" OffsA="7"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Moving negative" Size="1" OffsA="5"/>
@@ -1594,6 +1587,27 @@ External Setpoint Generation:
 				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="STM Control^Control^Reset" Size="1" OffsA="1"/>
 				<Link VarA="Drive^Outputs^Out^nCtrl2" VarB="STM Control^Control^Digital output 1" Size="1" OffsA="3"/>
 				<Link VarA="Drive^Outputs^Out^nDataOut2[0]" VarB="STM Velocity^Velocity"/>
+				<Link VarA="Enc^Inputs^In^nDataIn1[0]" VarB="ENC Status compact^Counter value" Size="16"/>
+				<Link VarA="Enc^Inputs^In^nDataIn2[0]" VarB="ENC Status compact^Latch value" Size="16"/>
+				<Link VarA="Enc^Inputs^In^nDataIn3" VarB="ENC Status compact^Status^Counter overflow" Size="1" OffsA="4"/>
+				<Link VarA="Enc^Inputs^In^nDataIn3" VarB="ENC Status compact^Status^Counter underflow" Size="1" OffsA="3"/>
+				<Link VarA="Enc^Inputs^In^nDataIn3" VarB="ENC Status compact^Status^Extrapolation stall" Size="1" OffsA="7"/>
+				<Link VarA="Enc^Inputs^In^nDataIn3" VarB="ENC Status compact^Status^Latch C valid" Size="1"/>
+				<Link VarA="Enc^Inputs^In^nDataIn3" VarB="ENC Status compact^Status^Latch extern valid" Size="1" OffsA="1"/>
+				<Link VarA="Enc^Inputs^In^nDataIn3" VarB="ENC Status compact^Status^Set counter done" Size="1" OffsA="2"/>
+				<Link VarA="Enc^Inputs^In^nDataIn4" VarB="ENC Status compact^Status^Status of extern latch" Size="1" OffsA="4"/>
+				<Link VarA="Enc^Inputs^In^nDataIn4" VarB="ENC Status compact^Status^Status of input A" Size="1"/>
+				<Link VarA="Enc^Inputs^In^nDataIn4" VarB="ENC Status compact^Status^Status of input B" Size="1" OffsA="1"/>
+				<Link VarA="Enc^Inputs^In^nDataIn4" VarB="ENC Status compact^Status^Status of input C" Size="1" OffsA="2"/>
+				<Link VarA="Enc^Inputs^In^nDataIn4" VarB="ENC Status compact^Status^Sync error" Size="1" OffsA="5"/>
+				<Link VarA="Enc^Inputs^In^nDataIn4" VarB="ENC Status compact^Status^TxPDO Toggle" Size="1" OffsA="7"/>
+				<Link VarA="Enc^Inputs^In^nDataIn6" VarB="WcState^InputToggle" Size="1" OffsA="1"/>
+				<Link VarA="Enc^Inputs^In^nDataIn6" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="Enc^Outputs^Out^nDataOut1[0]" VarB="ENC Control compact^Set counter value" Size="16"/>
+				<Link VarA="Enc^Outputs^Out^nDataOut3" VarB="ENC Control compact^Control^Enable latch C" Size="1"/>
+				<Link VarA="Enc^Outputs^Out^nDataOut3" VarB="ENC Control compact^Control^Enable latch extern on negative edge" Size="1" OffsA="3"/>
+				<Link VarA="Enc^Outputs^Out^nDataOut3" VarB="ENC Control compact^Control^Enable latch extern on positive edge" Size="1" OffsA="1"/>
+				<Link VarA="Enc^Outputs^Out^nDataOut3" VarB="ENC Control compact^Control^Set counter" Size="1" OffsA="2"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>
