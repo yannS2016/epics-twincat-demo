@@ -6,8 +6,8 @@
 # Generated using: pytmc 2.22.1
 # Project version: unknown
 #    Project hash: unknown
-#     PLC IP/host: 
-#      PLC Net ID: 
+#     PLC IP/host: 192.168.0.9
+#      PLC Net ID: 192.168.0.9.1.1
 # ** DEVELOPMENT MODE IOC **
 # * Using IOC boot directory for autosave.
 # * Archiver settings will not be configured.
@@ -16,7 +16,7 @@
 #
 #   LCLS General: * (SLAC)
 #   LCLS_Tc_DevAbs: * (SLAC - LCLS)
-#   LCLS_Tc_Motion: * (SLAC - LCLS)
+#   LCLS_Tc_Motion: * -> 0.0.0 (SLAC - LCLS)
 #   Tc2_EtherCAT: * (Beckhoff Automation GmbH)
 #   Tc2_MC2: * (Beckhoff Automation GmbH)
 #   Tc2_Standard: * (Beckhoff Automation GmbH)
@@ -40,10 +40,10 @@ dbLoadDatabase("$(ADS_IOC_TOP)/dbd/adsIoc.dbd")
 adsIoc_registerRecordDeviceDriver(pdbbase)
 
 epicsEnvSet("ASYN_PORT",        "ASYN_PLC")
-epicsEnvSet("IPADDR",           "")
-epicsEnvSet("AMSID",            "")
+epicsEnvSet("IPADDR",           "192.168.0.9")
+epicsEnvSet("AMSID",            "192.168.0.9.1.1")
 epicsEnvSet("AMS_PORT",         "851")
-epicsEnvSet("ADS_MAX_PARAMS",   "1780")
+epicsEnvSet("ADS_MAX_PARAMS",   "2464")
 epicsEnvSet("ADS_SAMPLE_MS",    "50")
 epicsEnvSet("ADS_MAX_DELAY_MS", "100")
 epicsEnvSet("ADS_TIMEOUT_MS",   "1000")
@@ -55,7 +55,7 @@ epicsEnvSet("ADS_TIME_SOURCE",  "0")
 epicsEnvSet("STREAM_PROTOCOL_PATH", "$(ADS_IOC_TOP)/db")
 
 # Add a route to the PLC automatically:
-system("${ADS_IOC_TOP}/scripts/add_route.sh  ^172.*$")
+system("${ADS_IOC_TOP}/scripts/add_route.sh 192.168.0.9 ^172.*$")
 
 # adsAsynPortDriverConfigure(portName, ipaddr, amsaddr, amsport,
 #    asynParamTableSize, priority, noAutoConnect, defaultSampleTimeMS,
@@ -120,9 +120,22 @@ epicsEnvSet("IDLE_POLL_RATE", "1000")
 
 epicsEnvSet("AXIS_NO",         "1")
 epicsEnvSet("MOTOR_PREFIX",    "TST:MOTION:")
-epicsEnvSet("MOTOR_NAME",      "PTP")
-epicsEnvSet("MOTOR_ADS_PATH",  "PRG_PTP.fbPtp")
-epicsEnvSet("DESC",            "PRG_PTP.fbPtp / HT23")
+epicsEnvSet("MOTOR_NAME",      "HT23")
+epicsEnvSet("MOTOR_ADS_PATH",  "PRG_PTP.fbptpht23")
+epicsEnvSet("DESC",            "PRG_PTP.fbptpht23 / HT23")
+epicsEnvSet("EGU",             "mm")
+epicsEnvSet("PREC",            "3")
+epicsEnvSet("AXISCONFIG",      "")
+epicsEnvSet("ECAXISFIELDINIT", "")
+epicsEnvSet("AMPLIFIER_FLAGS", "")
+# (FB_MotionStageNC: stream bulk and MR uniformity orchestration)
+dbLoadRecords("tcmotor.template", "PORT=$(ASYN_PORT), ADSPORT=$(AMS_PORT), ADSPATH=$(MOTOR_ADS_PATH), PREFIX=$(MOTOR_PREFIX), M=$(MOTOR_NAME), EGU=$(EGU), PREC=$(PREC)")
+
+epicsEnvSet("AXIS_NO",         "2")
+epicsEnvSet("MOTOR_PREFIX",    "TST:MOTION:")
+epicsEnvSet("MOTOR_NAME",      "SO23HS")
+epicsEnvSet("MOTOR_ADS_PATH",  "PRG_PTP.fbPtpso23hs")
+epicsEnvSet("DESC",            "PRG_PTP.fbPtpso23hs / SO23HS")
 epicsEnvSet("EGU",             "mm")
 epicsEnvSet("PREC",            "3")
 epicsEnvSet("AXISCONFIG",      "")
@@ -140,14 +153,14 @@ dbLoadRecords("caPutLog.db", "IOC=$(IOC)")
 dbLoadRecords("TwinCAT_TaskInfo.db", "PORT=$(ASYN_PORT),PREFIX=PLC:Training,IDX=1,TASK_PORT=350")
 dbLoadRecords("TwinCAT_AppInfo.db", "PORT=$(ASYN_PORT), PREFIX=PLC:Training")
 
-dbLoadRecords("TwinCAT_Project.db", "PREFIX=PLC:Training,PROJECT=Tc-epics-training.tsproj,HASH=unknown,VERSION=unknown,PYTMC=2.22.1,PLC_HOST=")
+dbLoadRecords("TwinCAT_Project.db", "PREFIX=PLC:Training,PROJECT=Tc-epics-training.tsproj,HASH=unknown,VERSION=unknown,PYTMC=2.22.1,PLC_HOST=192.168.0.9")
 
 #   LCLS General: * (SLAC)
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:Training,DEPENDENCY=LCLS_General,VERSION=*,VENDOR=SLAC")
 #   LCLS_Tc_DevAbs: * (SLAC - LCLS)
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:Training,DEPENDENCY=LCLS_Tc_DevAbs,VERSION=*,VENDOR=SLAC - LCLS")
-#   LCLS_Tc_Motion: * (SLAC - LCLS)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:Training,DEPENDENCY=LCLS_Tc_Motion,VERSION=*,VENDOR=SLAC - LCLS")
+#   LCLS_Tc_Motion: * -> 0.0.0 (SLAC - LCLS)
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:Training,DEPENDENCY=LCLS_Tc_Motion,VERSION=0.0.0,VENDOR=SLAC - LCLS")
 #   Tc2_EtherCAT: * (Beckhoff Automation GmbH)
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:Training,DEPENDENCY=Tc2_EtherCAT,VERSION=*,VENDOR=Beckhoff Automation GmbH")
 #   Tc2_MC2: * (Beckhoff Automation GmbH)
@@ -164,8 +177,8 @@ cd "$(IOC_TOP)"
 ## PLC Project Database files ##
 dbLoadRecords("Training.db", "PORT=$(ASYN_PORT),PREFIX=PLC:Training:,IOCNAME=$(IOC),IOC=$(IOC)")
 
-# Total records: 780
-callbackSetQueueSize(3560)
+# Total records: 1464
+callbackSetQueueSize(4928)
 
 # Autosave and archive settings:
 save_restoreSet_status_prefix("PLC:Training:")
