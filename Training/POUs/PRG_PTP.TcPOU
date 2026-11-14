@@ -28,6 +28,40 @@ VAR
         iPersistentDataStorage := fbPersistentDataStorage
 	) ;
 	bFirstScan: BOOL := TRUE;
+    {attribute 'pytmc' := '
+		pv: TST:MOTION:SO23HS:SIM:Enable
+		io: io
+	'}
+	bSimEnable : BOOL;
+    {attribute 'pytmc' := '
+		pv: TST:MOTION:SO23HS:SIM:HomeLo
+		io: io
+	'}
+	fSimHomeLo : LREAL := 10.0;
+    {attribute 'pytmc' := '
+		pv: TST:MOTION:SO23HS:SIM:HomeHi
+		io: io
+	'}
+	fSimHomeHi : LREAL := 15.0;
+    {attribute 'pytmc' := '
+		pv: TST:MOTION:SO23HS:SIM:Searches
+		io: i
+	'}
+	nSearches : INT;
+    {attribute 'pytmc' := '
+		pv: TST:MOTION:SO23HS:SIM:HitFwd
+		io: i
+	'}
+	bHitFwd : BOOL;
+    {attribute 'pytmc' := '
+		pv: TST:MOTION:SO23HS:SIM:HitHome
+		io: i
+	'}
+	bHitHome : BOOL;
+	fSimPos, fLastPos : LREAL;
+	bSearching, bHomeFirst, bSimWas, bPulse : BOOL;
+	rtSearching : R_TRIG;
+	fbTravel, fbPulseLen : TON;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -63,6 +97,47 @@ END_IF
 
 fbptpht23();
 fbPtpso23hs();
+fSimPos := fbPtpso23hs.MotionStatus.fActPosition;
+bSearching := bSimEnable AND ABS(fSimPos) > 1.0E9;
+rtSearching(CLK := bSearching);
+IF rtSearching.Q THEN
+    nSearches := nSearches + 1;
+END_IF
+IF NOT bSearching THEN
+    fLastPos := fSimPos;
+    IF NOT fbPtpso23hs.MotionStatus.bBusy THEN
+        nSearches := 0;
+    END_IF
+END_IF
+fbTravel(IN := bSearching, PT := T#1500MS);
+fbPulseLen(IN := fbTravel.Q, PT := T#2S);
+bPulse := fbTravel.Q AND NOT fbPulseLen.Q;
+bHitFwd := FALSE;
+bHitHome := FALSE;
+IF bSearching THEN
+    CASE fbPtpso23hs.HomeMode OF
+        E_EpicsHomeCmd.HIGH_LIMIT:
+            bHitFwd := bPulse;
+        E_EpicsHomeCmd.HOME_VIA_LOW:
+            bHomeFirst := fLastPos > fSimHomeHi;
+            IF nSearches > 1 OR bHomeFirst THEN
+                bHitHome := bPulse;
+            END_IF
+        E_EpicsHomeCmd.HOME_VIA_HIGH:
+            bHomeFirst := fLastPos < fSimHomeLo;
+            IF nSearches <= 1 AND NOT bHomeFirst THEN
+                bHitFwd := bPulse;
+            ELSE
+                bHitHome := bPulse;
+            END_IF
+    END_CASE
+END_IF
+IF bSimEnable THEN
+    fbPtpso23hs.EnableLimits(ForwardEnable := NOT bHitFwd, BackwardEnable := TRUE, HomeEnable := bHitHome);
+ELSIF bSimWas THEN
+    fbPtpso23hs.EnableLimits(ForwardEnable := TRUE, BackwardEnable := TRUE, HomeEnable := FALSE);
+END_IF
+bSimWas := bSimEnable;
 fbPersistentDataStorage();]]></ST>
     </Implementation>
   </POU>
