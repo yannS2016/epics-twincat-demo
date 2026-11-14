@@ -98,12 +98,22 @@ $(PREFIX)RequestedBP:Transmission_RBV.VAL	1	monitor
 $(PREFIX)RequestedBP:PhotonEnergy_RBV.VAL	1	monitor
 $(PREFIX)RequestedBP:eVRanges_RBV.VAL	1	monitor
 $(PREFIX)RequestedBP:Valid_RBV.VAL	1	monitor
+TST:MOTION:SO23HS:SIM:HitFwd_RBV.VAL	1	scan
+TST:MOTION:SO23HS:SIM:HitHome_RBV.VAL	1	scan
+TST:MOTION:SO23HS:SIM:Enable_RBV.VAL	1	scan
+TST:MOTION:SO23HS:SIM:Enable.VAL	1	scan
+TST:MOTION:SO23HS:SIM:HomeHi_RBV.VAL	1	scan
+TST:MOTION:SO23HS:SIM:HomeHi.VAL	1	scan
+TST:MOTION:SO23HS:SIM:HomeLo_RBV.VAL	1	scan
+TST:MOTION:SO23HS:SIM:HomeLo.VAL	1	scan
 TST:MOTION:SO23HS:nEncoderCount_RBV.VAL	1	scan
 TST:MOTION:SO23HS:bAcknowledgeUnwind_RBV.VAL	1	scan
 TST:MOTION:SO23HS:bAcknowledgeUnwind.VAL	1	scan
 TST:MOTION:SO23HS:bDisableBlocked_RBV.VAL	1	scan
 TST:MOTION:SO23HS:fRampRatio_RBV.VAL	1	scan
 TST:MOTION:SO23HS:fRampRatio.VAL	1	scan
+TST:MOTION:SO23HS:fSettleWindow_RBV.VAL	1	scan
+TST:MOTION:SO23HS:fSettleWindow.VAL	1	scan
 TST:MOTION:SO23HS:sDisableBlockedMessage_RBV.VAL	1	scan
 TST:MOTION:SO23HS:NC:Backlash:Goal_RBV.VAL	1	scan
 TST:MOTION:SO23HS:NC:Backlash:Goal.VAL	1	scan
@@ -718,6 +728,8 @@ TST:MOTION:SO23HS:NC:TargetPosWindow:TLastUp_RBV.VAL	1	scan
 TST:MOTION:SO23HS:bHardwareEnable_RBV.VAL	1	scan
 TST:MOTION:SO23HS:bUserEnable_RBV.VAL	1	scan
 TST:MOTION:SO23HS:bUserEnable.VAL	1	scan
+TST:MOTION:SO23HS:nBacklashSettleTime_RBV.VAL	1	scan
+TST:MOTION:SO23HS:nBacklashSettleTime.VAL	1	scan
 TST:MOTION:SO23HS:nWatchDogTime_RBV.VAL	1	scan
 TST:MOTION:SO23HS:nWatchDogTime.VAL	1	scan
 TST:MOTION:SO23HS:bHalt_RBV.VAL	1	scan
@@ -786,6 +798,8 @@ TST:MOTION:HT23:bAcknowledgeUnwind.VAL	1	scan
 TST:MOTION:HT23:bDisableBlocked_RBV.VAL	1	scan
 TST:MOTION:HT23:fRampRatio_RBV.VAL	1	scan
 TST:MOTION:HT23:fRampRatio.VAL	1	scan
+TST:MOTION:HT23:fSettleWindow_RBV.VAL	1	scan
+TST:MOTION:HT23:fSettleWindow.VAL	1	scan
 TST:MOTION:HT23:sDisableBlockedMessage_RBV.VAL	1	scan
 TST:MOTION:HT23:NC:Backlash:Goal_RBV.VAL	1	scan
 TST:MOTION:HT23:NC:Backlash:Goal.VAL	1	scan
@@ -1400,6 +1414,8 @@ TST:MOTION:HT23:NC:TargetPosWindow:TLastUp_RBV.VAL	1	scan
 TST:MOTION:HT23:bHardwareEnable_RBV.VAL	1	scan
 TST:MOTION:HT23:bUserEnable_RBV.VAL	1	scan
 TST:MOTION:HT23:bUserEnable.VAL	1	scan
+TST:MOTION:HT23:nBacklashSettleTime_RBV.VAL	1	scan
+TST:MOTION:HT23:nBacklashSettleTime.VAL	1	scan
 TST:MOTION:HT23:nWatchDogTime_RBV.VAL	1	scan
 TST:MOTION:HT23:nWatchDogTime.VAL	1	scan
 TST:MOTION:HT23:bHalt_RBV.VAL	1	scan
@@ -1462,3 +1478,4 @@ TST:MOTION:HT23:nErrorId_RBV.VAL	1	scan
 TST:MOTION:HT23:nMotionAxisID_RBV.VAL	1	scan
 TST:MOTION:HT23:sErrorMessage_RBV.VAL	1	scan
 TST:MOTION:HT23:sName_RBV.VAL	1	scan
+TST:MOTION:SO23HS:SIM:Searches_RBV.VAL	1	scan

@@ -1304,6 +1304,100 @@ record(bi, "$(PREFIX)RequestedBP:Valid_RBV") {
   field(ASG, "NO_WRITE")
 }
 
+record(bi, "TST:MOTION:SO23HS:SIM:HitFwd_RBV") {
+  field(DESC, "PRG_PTP.bHitFwd")
+  field(SCAN, "I/O Intr")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.bHitFwd?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+  field(ASG, "NO_WRITE")
+}
+
+record(bi, "TST:MOTION:SO23HS:SIM:HitHome_RBV") {
+  field(DESC, "PRG_PTP.bHitHome")
+  field(SCAN, "I/O Intr")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.bHitHome?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+  field(ASG, "NO_WRITE")
+}
+
+record(bi, "TST:MOTION:SO23HS:SIM:Enable_RBV") {
+  field(DESC, "PRG_PTP.bSimEnable")
+  field(SCAN, "I/O Intr")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.bSimEnable?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+  field(ASG, "NO_WRITE")
+}
+
+record(bo, "TST:MOTION:SO23HS:SIM:Enable") {
+  field(DESC, "PRG_PTP.bSimEnable")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_PTP.bSimEnable=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
+  info(archive, "VAL")
+}
+
+record(ai, "TST:MOTION:SO23HS:SIM:HomeHi_RBV") {
+  field(DESC, "PRG_PTP.fSimHomeHi")
+  field(SCAN, "I/O Intr")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fSimHomeHi?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+  field(ASG, "NO_WRITE")
+}
+
+record(ao, "TST:MOTION:SO23HS:SIM:HomeHi") {
+  field(DESC, "PRG_PTP.fSimHomeHi")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_PTP.fSimHomeHi=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
+record(ai, "TST:MOTION:SO23HS:SIM:HomeLo_RBV") {
+  field(DESC, "PRG_PTP.fSimHomeLo")
+  field(SCAN, "I/O Intr")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fSimHomeLo?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+  field(ASG, "NO_WRITE")
+}
+
+record(ao, "TST:MOTION:SO23HS:SIM:HomeLo") {
+  field(DESC, "PRG_PTP.fSimHomeLo")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_PTP.fSimHomeLo=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
 record(longin, "TST:MOTION:SO23HS:nEncoderCount_RBV") {
   field(DESC, "Count from encoder hardware")
   field(SCAN, "I/O Intr")
@@ -1371,6 +1465,32 @@ record(ao, "TST:MOTION:SO23HS:fRampRatio") {
   field(UDFS, "0")
   field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_PTP.fbPtpso23hs.fbMotionAxis.fbBacklashCompensation.fRampRatio=")
   field(PREC, "3")
+  info(autosaveFields, "VAL")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
+record(ai, "TST:MOTION:SO23HS:fSettleWindow_RBV") {
+  field(DESC, "backlash settle window, 0 = auto")
+  field(SCAN, "I/O Intr")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fbPtpso23hs.fbMotionAxis.fbBacklashCompensation.fSettleWindow?")
+  field(PREC, "3")
+  field(EGU, "mm")
+  info(autosaveFields, "VAL")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+  field(ASG, "NO_WRITE")
+}
+
+record(ao, "TST:MOTION:SO23HS:fSettleWindow") {
+  field(DESC, "backlash settle window, 0 = auto")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_PTP.fbPtpso23hs.fbMotionAxis.fbBacklashCompensation.fSettleWindow=")
+  field(PREC, "3")
+  field(EGU, "mm")
   info(autosaveFields, "VAL")
   info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
@@ -9937,6 +10057,26 @@ record(bo, "TST:MOTION:SO23HS:bUserEnable") {
   info(archive, "VAL")
 }
 
+record(longin, "TST:MOTION:SO23HS:nBacklashSettleTime_RBV") {
+  field(DESC, ": backlash settle timeout [ms]")
+  field(SCAN, "I/O Intr")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fbPtpso23hs.fbStateMachine.nBacklashSettleTime?")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV SIMS UDFS")
+  info(archive, "VAL")
+  field(ASG, "NO_WRITE")
+}
+
+record(longout, "TST:MOTION:SO23HS:nBacklashSettleTime") {
+  field(DESC, ": backlash settle timeout [ms]")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_PTP.fbPtpso23hs.fbStateMachine.nBacklashSettleTime=")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
 record(longin, "TST:MOTION:SO23HS:nWatchDogTime_RBV") {
   field(DESC, ": state machine watchdog timeout")
   field(SCAN, "I/O Intr")
@@ -10836,6 +10976,32 @@ record(ao, "TST:MOTION:HT23:fRampRatio") {
   field(UDFS, "0")
   field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_PTP.fbptpht23.fbMotionAxis.fbBacklashCompensation.fRampRatio=")
   field(PREC, "3")
+  info(autosaveFields, "VAL")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
+record(ai, "TST:MOTION:HT23:fSettleWindow_RBV") {
+  field(DESC, "backlash settle window, 0 = auto")
+  field(SCAN, "I/O Intr")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fbptpht23.fbMotionAxis.fbBacklashCompensation.fSettleWindow?")
+  field(PREC, "3")
+  field(EGU, "mm")
+  info(autosaveFields, "VAL")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+  field(ASG, "NO_WRITE")
+}
+
+record(ao, "TST:MOTION:HT23:fSettleWindow") {
+  field(DESC, "backlash settle window, 0 = auto")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_PTP.fbptpht23.fbMotionAxis.fbBacklashCompensation.fSettleWindow=")
+  field(PREC, "3")
+  field(EGU, "mm")
   info(autosaveFields, "VAL")
   info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
@@ -19402,6 +19568,26 @@ record(bo, "TST:MOTION:HT23:bUserEnable") {
   info(archive, "VAL")
 }
 
+record(longin, "TST:MOTION:HT23:nBacklashSettleTime_RBV") {
+  field(DESC, ": backlash settle timeout [ms]")
+  field(SCAN, "I/O Intr")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fbptpht23.fbStateMachine.nBacklashSettleTime?")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV SIMS UDFS")
+  info(archive, "VAL")
+  field(ASG, "NO_WRITE")
+}
+
+record(longout, "TST:MOTION:HT23:nBacklashSettleTime") {
+  field(DESC, ": backlash settle timeout [ms]")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_PTP.fbptpht23.fbStateMachine.nBacklashSettleTime=")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
 record(longin, "TST:MOTION:HT23:nWatchDogTime_RBV") {
   field(DESC, ": state machine watchdog timeout")
   field(SCAN, "I/O Intr")
@@ -20230,6 +20416,17 @@ record(waveform, "TST:MOTION:HT23:sName_RBV") {
   field(MPST, "On Change")
   field(APST, "On Change")
   info(autosaveFields_pass0, "DESC DISS SIMS UDFS")
+  info(archive, "VAL")
+  field(ASG, "NO_WRITE")
+}
+
+record(longin, "TST:MOTION:SO23HS:SIM:Searches_RBV") {
+  field(DESC, "PRG_PTP.nSearches")
+  field(SCAN, "I/O Intr")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.nSearches?")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV SIMS UDFS")
   info(archive, "VAL")
   field(ASG, "NO_WRITE")
 }

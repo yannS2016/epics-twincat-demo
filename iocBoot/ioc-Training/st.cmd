@@ -43,7 +43,7 @@ epicsEnvSet("ASYN_PORT",        "ASYN_PLC")
 epicsEnvSet("IPADDR",           "192.168.0.9")
 epicsEnvSet("AMSID",            "192.168.0.9.1.1")
 epicsEnvSet("AMS_PORT",         "851")
-epicsEnvSet("ADS_MAX_PARAMS",   "2464")
+epicsEnvSet("ADS_MAX_PARAMS",   "2481")
 epicsEnvSet("ADS_SAMPLE_MS",    "50")
 epicsEnvSet("ADS_MAX_DELAY_MS", "100")
 epicsEnvSet("ADS_TIMEOUT_MS",   "1000")
@@ -177,8 +177,8 @@ cd "$(IOC_TOP)"
 ## PLC Project Database files ##
 dbLoadRecords("Training.db", "PORT=$(ASYN_PORT),PREFIX=PLC:Training:,IOCNAME=$(IOC),IOC=$(IOC)")
 
-# Total records: 1464
-callbackSetQueueSize(4928)
+# Total records: 1481
+callbackSetQueueSize(4962)
 
 # Autosave and archive settings:
 save_restoreSet_status_prefix("PLC:Training:")
