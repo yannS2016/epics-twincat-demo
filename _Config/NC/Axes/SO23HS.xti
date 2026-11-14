@@ -1436,7 +1436,7 @@ External Setpoint Generation:
 			<EncPara ScaleFactorNumerator="5" ScaleFactorDenominator="4096" MaxCount="#x0000ffff">
 				<SoftEndMinControl Enable="true" Range="1"/>
 				<SoftEndMaxControl Enable="true" Range="60"/>
-				<Inc RefSearchInverse="true" RefSyncInverse="false" RefMode="2" RefSoftSyncMask="#x0000ffff"/>
+				<Inc RefSearchInverse="true" RefSyncInverse="false" RefMode="1" RefSoftSyncMask="#x0000ffff"/>
 			</EncPara>
 			<Vars VarGrpType="1">
 				<Name>Inputs</Name>
