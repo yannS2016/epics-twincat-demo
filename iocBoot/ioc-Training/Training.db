@@ -1472,30 +1472,6 @@ record(bi, "TST:MOTION:SO23HS:bDisableBlocked_RBV") {
   field(ASG, "NO_WRITE")
 }
 
-record(bi, "TST:MOTION:SO23HS:bTestForceDisable_RBV") {
-  field(DESC, "TEST ONLY force MC disable")
-  field(SCAN, "I/O Intr")
-  field(TSE, "-2")
-  field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fbPtpso23hs.fbMotionAxis.fbBacklashCompensation.bTestForceDisable?")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
-  info(archive, "VAL")
-  field(ASG, "NO_WRITE")
-}
-
-record(bo, "TST:MOTION:SO23HS:bTestForceDisable") {
-  field(DESC, "TEST ONLY force MC disable")
-  field(DTYP, "asynInt32")
-  field(UDFS, "0")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_PTP.fbPtpso23hs.fbMotionAxis.fbBacklashCompensation.bTestForceDisable=")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
-  info(archive, "VAL")
-}
-
 record(ai, "TST:MOTION:SO23HS:fRampRatio_RBV") {
   field(DESC, "backlash ramp Velocity ratio")
   field(SCAN, "I/O Intr")
@@ -1583,58 +1559,6 @@ record(ao, "TST:MOTION:SO23HS:fSettleWindow") {
   info(autosaveFields, "VAL")
   info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
-}
-
-record(ai, "TST:MOTION:SO23HS:fTestPeakPosDiffOff_RBV") {
-  # PRG_PTP.fbPtpso23hs.fbMotionAxis.fbBacklashCompensation.fTestPeakPosDiffOff
-  field(DESC, "PRG_PTP.fbPtpso23hs....estPeakPosDiffOff")
-  field(SCAN, "I/O Intr")
-  field(TSE, "-2")
-  field(DTYP, "asynFloat64")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fbPtpso23hs.fbMotionAxis.fbBacklashCompensation.fTestPeakPosDiffOff?")
-  field(PREC, "3")
-  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
-  info(archive, "VAL")
-  field(ASG, "NO_WRITE")
-}
-
-record(ai, "TST:MOTION:SO23HS:fTestPeakPosDiffOn_RBV") {
-  # PRG_PTP.fbPtpso23hs.fbMotionAxis.fbBacklashCompensation.fTestPeakPosDiffOn
-  field(DESC, "PRG_PTP.fbPtpso23hs....TestPeakPosDiffOn")
-  field(SCAN, "I/O Intr")
-  field(TSE, "-2")
-  field(DTYP, "asynFloat64")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fbPtpso23hs.fbMotionAxis.fbBacklashCompensation.fTestPeakPosDiffOn?")
-  field(PREC, "3")
-  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
-  info(archive, "VAL")
-  field(ASG, "NO_WRITE")
-}
-
-record(ai, "TST:MOTION:SO23HS:fTestPeakVeloOff_RBV") {
-  # PRG_PTP.fbPtpso23hs.fbMotionAxis.fbBacklashCompensation.fTestPeakVeloOff
-  field(DESC, "PRG_PTP.fbPtpso23hs.....fTestPeakVeloOff")
-  field(SCAN, "I/O Intr")
-  field(TSE, "-2")
-  field(DTYP, "asynFloat64")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fbPtpso23hs.fbMotionAxis.fbBacklashCompensation.fTestPeakVeloOff?")
-  field(PREC, "3")
-  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
-  info(archive, "VAL")
-  field(ASG, "NO_WRITE")
-}
-
-record(ai, "TST:MOTION:SO23HS:fTestPeakVeloOn_RBV") {
-  # PRG_PTP.fbPtpso23hs.fbMotionAxis.fbBacklashCompensation.fTestPeakVeloOn
-  field(DESC, "PRG_PTP.fbPtpso23hs....n.fTestPeakVeloOn")
-  field(SCAN, "I/O Intr")
-  field(TSE, "-2")
-  field(DTYP, "asynFloat64")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fbPtpso23hs.fbMotionAxis.fbBacklashCompensation.fTestPeakVeloOn?")
-  field(PREC, "3")
-  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
-  info(archive, "VAL")
-  field(ASG, "NO_WRITE")
 }
 
 record(waveform, "TST:MOTION:SO23HS:sDisableBlockedMessage_RBV") {
@@ -11124,30 +11048,6 @@ record(bi, "TST:MOTION:HT23:bDisableBlocked_RBV") {
   field(ASG, "NO_WRITE")
 }
 
-record(bi, "TST:MOTION:HT23:bTestForceDisable_RBV") {
-  field(DESC, "TEST ONLY force MC disable")
-  field(SCAN, "I/O Intr")
-  field(TSE, "-2")
-  field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fbptpht23.fbMotionAxis.fbBacklashCompensation.bTestForceDisable?")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
-  info(archive, "VAL")
-  field(ASG, "NO_WRITE")
-}
-
-record(bo, "TST:MOTION:HT23:bTestForceDisable") {
-  field(DESC, "TEST ONLY force MC disable")
-  field(DTYP, "asynInt32")
-  field(UDFS, "0")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_PTP.fbptpht23.fbMotionAxis.fbBacklashCompensation.bTestForceDisable=")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
-  info(archive, "VAL")
-}
-
 record(ai, "TST:MOTION:HT23:fRampRatio_RBV") {
   field(DESC, "backlash ramp Velocity ratio")
   field(SCAN, "I/O Intr")
@@ -11235,58 +11135,6 @@ record(ao, "TST:MOTION:HT23:fSettleWindow") {
   info(autosaveFields, "VAL")
   info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
-}
-
-record(ai, "TST:MOTION:HT23:fTestPeakPosDiffOff_RBV") {
-  # PRG_PTP.fbptpht23.fbMotionAxis.fbBacklashCompensation.fTestPeakPosDiffOff
-  field(DESC, "PRG_PTP.fbptpht23.fb...estPeakPosDiffOff")
-  field(SCAN, "I/O Intr")
-  field(TSE, "-2")
-  field(DTYP, "asynFloat64")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fbptpht23.fbMotionAxis.fbBacklashCompensation.fTestPeakPosDiffOff?")
-  field(PREC, "3")
-  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
-  info(archive, "VAL")
-  field(ASG, "NO_WRITE")
-}
-
-record(ai, "TST:MOTION:HT23:fTestPeakPosDiffOn_RBV") {
-  # PRG_PTP.fbptpht23.fbMotionAxis.fbBacklashCompensation.fTestPeakPosDiffOn
-  field(DESC, "PRG_PTP.fbptpht23.fb...TestPeakPosDiffOn")
-  field(SCAN, "I/O Intr")
-  field(TSE, "-2")
-  field(DTYP, "asynFloat64")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fbptpht23.fbMotionAxis.fbBacklashCompensation.fTestPeakPosDiffOn?")
-  field(PREC, "3")
-  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
-  info(archive, "VAL")
-  field(ASG, "NO_WRITE")
-}
-
-record(ai, "TST:MOTION:HT23:fTestPeakVeloOff_RBV") {
-  # PRG_PTP.fbptpht23.fbMotionAxis.fbBacklashCompensation.fTestPeakVeloOff
-  field(DESC, "PRG_PTP.fbptpht23.fb....fTestPeakVeloOff")
-  field(SCAN, "I/O Intr")
-  field(TSE, "-2")
-  field(DTYP, "asynFloat64")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fbptpht23.fbMotionAxis.fbBacklashCompensation.fTestPeakVeloOff?")
-  field(PREC, "3")
-  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
-  info(archive, "VAL")
-  field(ASG, "NO_WRITE")
-}
-
-record(ai, "TST:MOTION:HT23:fTestPeakVeloOn_RBV") {
-  # PRG_PTP.fbptpht23.fbMotionAxis.fbBacklashCompensation.fTestPeakVeloOn
-  field(DESC, "PRG_PTP.fbptpht23.fb...n.fTestPeakVeloOn")
-  field(SCAN, "I/O Intr")
-  field(TSE, "-2")
-  field(DTYP, "asynFloat64")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fbptpht23.fbMotionAxis.fbBacklashCompensation.fTestPeakVeloOn?")
-  field(PREC, "3")
-  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
-  info(archive, "VAL")
-  field(ASG, "NO_WRITE")
 }
 
 record(waveform, "TST:MOTION:HT23:sDisableBlockedMessage_RBV") {
