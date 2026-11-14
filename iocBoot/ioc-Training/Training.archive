@@ -109,6 +109,8 @@ TST:MOTION:SO23HS:SIM:HomeLo.VAL	1	scan
 TST:MOTION:SO23HS:nEncoderCount_RBV.VAL	1	scan
 TST:MOTION:SO23HS:bAcknowledgeUnwind_RBV.VAL	1	scan
 TST:MOTION:SO23HS:bAcknowledgeUnwind.VAL	1	scan
+TST:MOTION:SO23HS:bCompensationInPositiveDirection_RBV.VAL	1	scan
+TST:MOTION:SO23HS:bCompensationInPositiveDirection.VAL	1	scan
 TST:MOTION:SO23HS:bDisableBlocked_RBV.VAL	1	scan
 TST:MOTION:SO23HS:fRampRatio_RBV.VAL	1	scan
 TST:MOTION:SO23HS:fRampRatio.VAL	1	scan
@@ -798,6 +800,8 @@ TST:MOTION:SO23HS:sName_RBV.VAL	1	scan
 TST:MOTION:HT23:nEncoderCount_RBV.VAL	1	scan
 TST:MOTION:HT23:bAcknowledgeUnwind_RBV.VAL	1	scan
 TST:MOTION:HT23:bAcknowledgeUnwind.VAL	1	scan
+TST:MOTION:HT23:bCompensationInPositiveDirection_RBV.VAL	1	scan
+TST:MOTION:HT23:bCompensationInPositiveDirection.VAL	1	scan
 TST:MOTION:HT23:bDisableBlocked_RBV.VAL	1	scan
 TST:MOTION:HT23:fRampRatio_RBV.VAL	1	scan
 TST:MOTION:HT23:fRampRatio.VAL	1	scan
