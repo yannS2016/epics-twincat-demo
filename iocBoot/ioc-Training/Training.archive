@@ -112,6 +112,9 @@ TST:MOTION:SO23HS:bAcknowledgeUnwind.VAL	1	scan
 TST:MOTION:SO23HS:bDisableBlocked_RBV.VAL	1	scan
 TST:MOTION:SO23HS:fRampRatio_RBV.VAL	1	scan
 TST:MOTION:SO23HS:fRampRatio.VAL	1	scan
+TST:MOTION:SO23HS:fRampVelocity_RBV.VAL	1	scan
+TST:MOTION:SO23HS:fRampVelocity.VAL	1	scan
+TST:MOTION:SO23HS:fRampVelocityApplied_RBV.VAL	1	scan
 TST:MOTION:SO23HS:fSettleWindow_RBV.VAL	1	scan
 TST:MOTION:SO23HS:fSettleWindow.VAL	1	scan
 TST:MOTION:SO23HS:sDisableBlockedMessage_RBV.VAL	1	scan
@@ -798,6 +801,9 @@ TST:MOTION:HT23:bAcknowledgeUnwind.VAL	1	scan
 TST:MOTION:HT23:bDisableBlocked_RBV.VAL	1	scan
 TST:MOTION:HT23:fRampRatio_RBV.VAL	1	scan
 TST:MOTION:HT23:fRampRatio.VAL	1	scan
+TST:MOTION:HT23:fRampVelocity_RBV.VAL	1	scan
+TST:MOTION:HT23:fRampVelocity.VAL	1	scan
+TST:MOTION:HT23:fRampVelocityApplied_RBV.VAL	1	scan
 TST:MOTION:HT23:fSettleWindow_RBV.VAL	1	scan
 TST:MOTION:HT23:fSettleWindow.VAL	1	scan
 TST:MOTION:HT23:sDisableBlockedMessage_RBV.VAL	1	scan

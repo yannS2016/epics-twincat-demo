@@ -1470,6 +1470,45 @@ record(ao, "TST:MOTION:SO23HS:fRampRatio") {
   info(archive, "VAL")
 }
 
+record(ai, "TST:MOTION:SO23HS:fRampVelocity_RBV") {
+  field(DESC, "backlash ramp velocity, 0 = auto")
+  field(SCAN, "I/O Intr")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fbPtpso23hs.fbMotionAxis.fbBacklashCompensation.fRampVelocity?")
+  field(PREC, "3")
+  field(EGU, "mm/s")
+  info(autosaveFields, "VAL")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+  field(ASG, "NO_WRITE")
+}
+
+record(ao, "TST:MOTION:SO23HS:fRampVelocity") {
+  field(DESC, "backlash ramp velocity, 0 = auto")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_PTP.fbPtpso23hs.fbMotionAxis.fbBacklashCompensation.fRampVelocity=")
+  field(PREC, "3")
+  field(EGU, "mm/s")
+  info(autosaveFields, "VAL")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
+record(ai, "TST:MOTION:SO23HS:fRampVelocityApplied_RBV") {
+  field(DESC, "Ramp velocity MC uses")
+  field(SCAN, "I/O Intr")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fbPtpso23hs.fbMotionAxis.fbBacklashCompensation.fRampVelocityApplied?")
+  field(PREC, "3")
+  field(EGU, "mm/s")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+  field(ASG, "NO_WRITE")
+}
+
 record(ai, "TST:MOTION:SO23HS:fSettleWindow_RBV") {
   field(DESC, "backlash settle window, 0 = auto")
   field(SCAN, "I/O Intr")
@@ -10979,6 +11018,45 @@ record(ao, "TST:MOTION:HT23:fRampRatio") {
   info(autosaveFields, "VAL")
   info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
+}
+
+record(ai, "TST:MOTION:HT23:fRampVelocity_RBV") {
+  field(DESC, "backlash ramp velocity, 0 = auto")
+  field(SCAN, "I/O Intr")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fbptpht23.fbMotionAxis.fbBacklashCompensation.fRampVelocity?")
+  field(PREC, "3")
+  field(EGU, "mm/s")
+  info(autosaveFields, "VAL")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+  field(ASG, "NO_WRITE")
+}
+
+record(ao, "TST:MOTION:HT23:fRampVelocity") {
+  field(DESC, "backlash ramp velocity, 0 = auto")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_PTP.fbptpht23.fbMotionAxis.fbBacklashCompensation.fRampVelocity=")
+  field(PREC, "3")
+  field(EGU, "mm/s")
+  info(autosaveFields, "VAL")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
+record(ai, "TST:MOTION:HT23:fRampVelocityApplied_RBV") {
+  field(DESC, "Ramp velocity MC uses")
+  field(SCAN, "I/O Intr")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_PTP.fbptpht23.fbMotionAxis.fbBacklashCompensation.fRampVelocityApplied?")
+  field(PREC, "3")
+  field(EGU, "mm/s")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+  field(ASG, "NO_WRITE")
 }
 
 record(ai, "TST:MOTION:HT23:fSettleWindow_RBV") {
