@@ -982,7 +982,7 @@ External Setpoint Generation:
 			</Relations>
 		</DataType>
 	</DataTypes>
-	<Instance TmcHash="{BC4CBF17-903C-386A-24B6-829FACED9C82}">
+	<Instance TmcHash="{81508257-CC99-B07D-1E97-D1C42991FF22}">
 		<Vars VarGrpType="1">
 			<Name>PlcTask Inputs</Name>
 			<Var>
